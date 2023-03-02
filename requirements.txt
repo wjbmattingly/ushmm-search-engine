@@ -3,3 +3,4 @@ annoy
 sentence-transformers
 seaborn
 plotly
+tabulate
