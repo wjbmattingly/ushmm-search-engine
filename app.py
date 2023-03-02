@@ -31,17 +31,17 @@ def load_data():
 @st.cache_resource()
 def load_nlp():
     model_name = "en_core_web_sm"
-    # try:
-    nlp = spacy.load(model_name, disable=["ner"])
-    # except:
-        # OSError
-        # print(f"Downloading {model_name}...")
-        # try:
-            # download(model_name)
-            # nlp = spacy.load(model_name, disable=["ner"])
-        # except:
-        #     OSError
-        #     raise Exception(f"{model_name} is not a recognized spaCy model.")
+    try:
+        nlp = spacy.load(model_name, disable=["ner"])
+    except:
+        OSError
+        print(f"Downloading {model_name}...")
+        try:
+            download(model_name)
+            nlp = spacy.load(model_name, disable=["ner"])
+        except:
+            OSError
+            raise Exception(f"{model_name} is not a recognized spaCy model.")
     return nlp
 
 def create_plot(df, word_cat, frequency_cat, pal_color, n=10):
